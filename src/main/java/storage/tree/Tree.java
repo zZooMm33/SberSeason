@@ -38,6 +38,16 @@ public class Tree {
         this.nodeValue = nodeValue;
     }
 
+    @Override
+    public String toString() {
+        return "Tree{" +
+                "nodeId=" + nodeId +
+                ", parentId=" + parentId +
+                ", nodeName='" + nodeName + '\'' +
+                ", nodeValue='" + nodeValue + '\'' +
+                '}';
+    }
+
     public static final class TreeBuilder {
         private int nodeId;
         private int parentId;

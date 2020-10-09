@@ -1,4 +1,4 @@
-package storage.tree;
+package storage;
 
 public class Tree {
     private int nodeId;

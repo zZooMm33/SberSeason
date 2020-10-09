@@ -1,8 +1,9 @@
-package utils.tree;
+package utils;
 
-import storage.tree.Tree;
+import storage.Tree;
 
-import java.util.LinkedList;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class Node {
@@ -24,6 +25,38 @@ public class Node {
 
     public void setChildList(List<Node> childList) {
         this.childList = childList;
+    }
+
+    public static void printNode(Node node){
+        System.out.println(node.getData().toString());
+
+        if (!node.getChildList().isEmpty()){
+            for (Node child:
+                    node.getChildList()) {
+                printNode(child);
+            }
+        }
+    }
+
+    public static void writeToFile(Node node, String path){
+        try(FileWriter writer = new FileWriter(path, false))
+        {
+            writeNode(node, writer);
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private static void writeNode(Node node, FileWriter writer) throws IOException {
+        writer.write(node.getData().toString() + "\n");
+
+        if (!node.getChildList().isEmpty()){
+            for (Node child:
+                    node.getChildList()) {
+                writeNode(child, writer);
+            }
+        }
     }
 
     public static final class NodeBuilder {

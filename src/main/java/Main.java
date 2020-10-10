@@ -11,9 +11,6 @@ public class Main {
 
         Node node = null;
         node = ParseFile.parse(PropReader.getVal(PropReader.PATH_READ_FILE));
-
-        if (node != null) {
-            Node.writeToFile(node, PropReader.getVal(PropReader.PATH_WRITE_FILE));
-        }
+        Node.writeToFile(node, PropReader.getVal(PropReader.PATH_WRITE_FILE));
     }
 }
